@@ -19,12 +19,11 @@ jobs:
         with:
           python-version: '3.8'  # Specify your Python version
 
-      # Uncomment the following step if you have a requirements.txt file
-      # - name: Install dependencies
-      #   run: |
-      #     pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m spacy download en_core_web_sm  # Download SpaCy model
 
       - name: Run Python script
         run: |
           python refined_historical_events_api.py
-
