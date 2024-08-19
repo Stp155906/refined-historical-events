@@ -1,0 +1,30 @@
+name: Run Python Script
+
+on:
+  workflow_dispatch:  # Allows manual triggering of the workflow
+  push:
+    branches:
+      - main  # Automatically triggers on pushes to the main branch
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Specify your Python version
+
+      # Uncomment the following step if you have a requirements.txt file
+      # - name: Install dependencies
+      #   run: |
+      #     pip install -r requirements.txt
+
+      - name: Run Python script
+        run: |
+          python refined_historical_events_api.py
+
